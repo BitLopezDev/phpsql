@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "phpmailer/phpmailer": "dev-master",
-        "php-parallel-lint/php-console-color": "dev-master"
+        "php-parallel-lint/php-console-color": "dev-master",
+        "vlucas/phpdotenv": "^5.5@dev"
     },
     "license": "MIT",
     "autoload": {

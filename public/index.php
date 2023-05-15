@@ -1,10 +1,11 @@
 <?php
 
 require("../vendor/autoload.php");
-
+use \Router\RouterHandler;
+require("../router/RouterHandler.php");
 use App\Controllers\IncomesController;
 use App\Controllers\WithdrawalsController;
-use Router\RouterHandler;
+
 
 // Obtener la URL
 $slug = $_GET["slug"] ?? "";

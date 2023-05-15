@@ -2,12 +2,12 @@
 
 namespace Database\PDO;
 
-class Connection {
+final class Connection {
 
     private static $instance;
     private $connection;
 
-    private function __construct() {
+    public function __construct() {
         $this->make_connection();
     }
 
@@ -23,11 +23,11 @@ class Connection {
     }
 
     private function make_connection() {
-        $server = "localhost";
-        $database = "finanzas_personales";
-        $username = "retaxmaster";
-        $password = "123";
-
+        $server = getenv('SERVER_NAME');
+        $database = getenv('DB_NAME');
+        $username = "root";
+        $password = getenv('DB_PASSWORD');
+print_r(getenv('DB_PASSWORD'));
         $conexion = new \PDO("mysql:host=$server;dbname=$database", $username, $password);
 
         $setnames = $conexion->prepare("SET NAMES 'utf8'");
@@ -37,3 +37,8 @@ class Connection {
     }
     
 }
+new Connection;
+?>
+<html>
+
+</html>
