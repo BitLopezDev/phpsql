@@ -4,6 +4,7 @@ require("../vendor/autoload.php");
 
 use App\Controllers\IncomesController;
 use App\Controllers\WithdrawalsController;
+use App\Controllers\GenericController;
 use Router\RouterHandler;
 
 // Obtener la URL
@@ -26,7 +27,7 @@ switch ($resource) {
         break;
 
     case "incomes":
-        
+
         $method = $_POST["method"] ?? "get";
         $router->set_method($method);
         $router->set_data($_POST);
@@ -35,14 +36,23 @@ switch ($resource) {
         break;
 
     case "withdrawals":
-        
+
         $method = $_POST["method"] ?? "get";
         $router->set_method($method);
         $router->set_data($_POST);
         $router->route(WithdrawalsController::class, $id);
 
         break;
-    
+
+    case "generic":
+
+        $method = $_POST["method"] ?? "get";
+        $router->set_method($method);
+        $router->set_data($_POST);
+        $router->route(GenericController::class, $id);
+
+        break;
+
     default:
         echo "404 Not Found";
         break;
