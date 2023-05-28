@@ -23,7 +23,7 @@ $router = new RouterHandler();
 switch ($resource) {
 
     case '/':
-        echo "Estás en la front page";
+
         break;
 
     case "incomes":
@@ -58,3 +58,42 @@ switch ($resource) {
         break;
 
 }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console</title>
+    <link rel="stylesheet" href="./css/console.css">
+</head>
+
+<body style="background-color: black; color:green;">
+    <main>
+        <div>BitLopez <span><i>PHP_SQL</i> V: <span style="font-size: 1.5em;">&alpha;</span> 0.0.0</span></div>
+        <br /><br /><br />
+        <div>
+            <table width="80%">
+                <tbody width="80%">
+                    <tr width="80%">
+                        <th> <span style="  float:left;"> PHPSQL\> &nbsp;</span>
+                            <input type="text" placeholder="Escriba su comando" contenteditable="true" style="" />
+                        </th>
+
+                    </tr> &nbsp;
+
+                    <!-- <tr><input type="text" style="border:0;" width="80%" /></tr> -->
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </main>
+</body>
+
+</html>

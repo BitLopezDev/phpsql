@@ -20,7 +20,8 @@ class RouterHandler
         $this->data = $data;
     }
 
-    public function route($controller, $id)
+
+    public function route($controller, $id, $table = 'incomes')
     {
         $resource = new $controller();
         if ($controller != 'App\Controllers\GenericController') {
@@ -47,6 +48,8 @@ class RouterHandler
 
             }
             print_r($controller);
+
+
         } else if ($controller == 'App\Controllers\GenericController') {
             print_r('Lady');
             switch ($this->method) {
@@ -57,7 +60,7 @@ class RouterHandler
                     else if ($id)
                         $resource->show($id);
                     else
-                        $resource->index();
+                        $resource->index($table);
                     break;
 
                 case "post":
@@ -72,7 +75,7 @@ class RouterHandler
 
 
         } else {
-            new CustomException(1, "RouterHandler Exception, route was neither incomes nor generic", basename($_SERVER['PHP_SELF']), __LINE__, );
+            new CustomException(1, "RouterHandler Exception, route was neither incomes, withdrawals nor generic", basename($_SERVER['PHP_SELF']), __LINE__, );
 
         }
 
