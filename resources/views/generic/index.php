@@ -49,7 +49,7 @@
 
         </table>
 
-        <a class="button-link" href="create/">Agregar nuevo ingreso</a>
+        <a class="button-link" href="./generic/create.php">Agregar nuevo ingreso</a>
 
     </main>
 

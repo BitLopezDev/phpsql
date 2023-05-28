@@ -26,7 +26,7 @@ class GenericController
 
         $results = $stmt->fetchAll();
 
-        require("../resources/views/incomes/index.php");
+        require("../resources/views/generic/index.php");
 
     }
 
@@ -35,32 +35,46 @@ class GenericController
      */
     public function create()
     {
-        require("../resources/views/incomes/create.php");
+        require("../resources/views/generic/create.php");
     }
 
     /**
      * Guarda un nuevo recurso en la base de datos
+     * "payment_method, type, date, amount, description"
      */
-    protected function store($data, string $table, array $columnheads, array $columncontent, string $coltitles, string $colinteriors, )
+    public function store($data, string $table = "incomes", /*array $columnheads, */)
     {
-
-        $stmt = $this->connection->prepare("INSERT INTO $table ($colinteriors) VALUES ($coltitles)");
-
-
-        for ($i = 0; $i < count($columnheads); $i++) {
-
-            $stmt->bindValue("$columncontent[$i]", $data["$columnheads[$i]"]);
+        $columnheads = [];
+        foreach ($data as $item => $value) {
+            array_push($columnheads, $item);
         }
+        //echo ("columnHeads es " . implode(' ', $columnheads) . "\n");
+
+        //
+        $stmt = $this->connection->prepare("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
+
+        // echo ("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
+
+
+
+        foreach ($data as $item => $value) {
+            echo ($item . " ");
+            echo ($data["$item"] . " \n");
+            $stmt->bindValue($item, $data["$item"]);
+
+        }
+
+        // var_dump($data[1]);
         $stmt->execute();
 
-        header("location: incomes");
+        //  header("location: generic");
 
     }
 
     /**
      * Muestra un único recurso especificado
      */
-    public function show($data, string $table, array $columnheads, array $columncontent, string $coltitles, string $colinteriors, $id)
+    public function show($id = 1)
     {
 
         $stmt = $this->connection->prepare("SELECT * FROM incomes WHERE id=:id;");

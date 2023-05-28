@@ -1,10 +1,15 @@
-input{
-    width: 80%; 
-    height: 1em; 
-    resize: vertical; 
-    overflow:auto; 
-    float:left; 
-    background-color: black; 
-    color:green; 
-    border:none; 
+input {
+    width: 80%;
+    height: 1em;
+    resize: vertical;
+    overflow: auto;
+    float: left;
+    background-color: black;
+    color: green;
+    border: none;
+}
+
+body {
+    background-color: black;
+    color: green;
 }

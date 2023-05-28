@@ -72,7 +72,7 @@ switch ($resource) {
     <link rel="stylesheet" href="./css/console.css">
 </head>
 
-<body style="background-color: black; color:green;">
+<body style="">
     <main>
         <div>BitLopez <span><i>PHP_SQL</i> V: <span style="font-size: 1.5em;">&alpha;</span> 0.0.0</span></div>
         <br /><br /><br />
@@ -86,7 +86,7 @@ switch ($resource) {
 
                     </tr> &nbsp;
 
-                    <!-- <tr><input type="text" style="border:0;" width="80%" /></tr> -->
+
                 </tbody>
             </table>
 

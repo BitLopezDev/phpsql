@@ -51,7 +51,7 @@ class RouterHandler
 
 
         } else if ($controller == 'App\Controllers\GenericController') {
-            print_r('Lady');
+            $columnheads = ["payment_method", "type", "date", "amount", "description"];
             switch ($this->method) {
 
                 case "get":
@@ -64,7 +64,7 @@ class RouterHandler
                     break;
 
                 case "post":
-                    $resource->store($this->data);
+                    $resource->store($this->data, 'incomes', $columnheads);
                     break;
 
                 case "delete":

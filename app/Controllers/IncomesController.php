@@ -4,18 +4,21 @@ namespace App\Controllers;
 
 use Database\PDO\Connection;
 
-class IncomesController {
+class IncomesController
+{
 
     private $connection;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connection = Connection::getInstance()->get_database_instance();
     }
 
     /**
      * Muestra una lista de este recurso
      */
-    public function index() {
+    public function index()
+    {
 
         $stmt = $this->connection->prepare("SELECT * FROM incomes");
         $stmt->execute();
@@ -29,14 +32,16 @@ class IncomesController {
     /**
      * Muestra un formulario para crear un nuevo recurso
      */
-    public function create() {
+    public function create()
+    {
         require("../resources/views/incomes/create.php");
     }
 
     /**
      * Guarda un nuevo recurso en la base de datos
      */
-    public function store($data) {
+    public function store($data)
+    {
 
         $stmt = $this->connection->prepare("INSERT INTO incomes (payment_method, type, date, amount, description) VALUES (:payment_method, :type, :date, :amount, :description)");
 
@@ -47,15 +52,16 @@ class IncomesController {
         $stmt->bindValue(":description", $data["description"]);
 
         $stmt->execute();
-
-        header("location: incomes");
+        print_r($data);
+        // header("location: incomes");
 
     }
 
     /**
      * Muestra un único recurso especificado
      */
-    public function show($id) {
+    public function show($id)
+    {
 
         $stmt = $this->connection->prepare("SELECT * FROM incomes WHERE id=:id;");
         $stmt->execute([
@@ -67,12 +73,15 @@ class IncomesController {
     /**
      * Muestra el formulario para editar un recurso
      */
-    public function edit() {}
+    public function edit()
+    {
+    }
 
     /**
      * Actualiza un recurso específico en la base de datos
      */
-    public function update($data, $id) {
+    public function update($data, $id)
+    {
 
         $stmt = $this->connection->prepare("UPDATE incomes SET 
             payment_method = :payment_method, 
@@ -96,7 +105,8 @@ class IncomesController {
     /**
      * Elimina un recurso específico de la base de datos
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
 
         $stmt = $this->connection->prepare("DELETE FROM incomes WHERE id = :id");
         $stmt->execute([
@@ -104,7 +114,7 @@ class IncomesController {
         ]);
 
     }
-    
+
 }
 
 /*

@@ -13,7 +13,7 @@
 <body>
     <h1>Agrega un nuevo ingreso</h1>
     <main>
-        <form action="../" method="post">
+        <form action="./" method="post">
 
             <div class="input-group">
                 <label for="payment_method">Método de pago</label>
