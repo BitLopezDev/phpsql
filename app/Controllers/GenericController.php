@@ -72,7 +72,7 @@ class GenericController
 
         // var_dump($data[1]);
         $stmt->execute();
-        //  echo ("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
+        // echo ("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
         //  header("location: generic");
 
     }

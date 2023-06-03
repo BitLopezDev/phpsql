@@ -16,6 +16,7 @@
 
     <main>
 
+<<<<<<< HEAD
         <table>
             <tr>
                 <th>Método de pago</th>
@@ -24,6 +25,9 @@
                 <th>Monto</th>
                 <th>Descripción</th>
             </tr>
+=======
+   
+>>>>>>> 8ad25e8bddb6be949e54b1671fdc090bdf9f09b9
 
             <tbody>
                 <?php foreach ($results as $result): ?>

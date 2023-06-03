@@ -2,32 +2,37 @@
 
 namespace Database\PDO;
 
-class Connection {
+final class Connection
+{
 
     private static $instance;
     private $connection;
 
-    private function __construct() {
+    public function __construct()
+    {
         $this->make_connection();
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (!self::$instance instanceof self)
             self::$instance = new self();
 
         return self::$instance;
     }
 
-    public function get_database_instance() {
+    public function get_database_instance()
+    {
         return $this->connection;
     }
 
-    private function make_connection() {
-        $server = "localhost";
-        $database = "finanzas_personales";
+    private function make_connection()
+    {
+        $server = getenv('SERVER_NAME');
+        $database = 'finanzas_personales';
         $username = "retaxmaster";
-        $password = "123";
-
+        $password = '123';
+        print_r(getenv('DB_PASSWORD'));
         $conexion = new \PDO("mysql:host=$server;dbname=$database", $username, $password);
 
         $setnames = $conexion->prepare("SET NAMES 'utf8'");
@@ -35,5 +40,10 @@ class Connection {
 
         $this->connection = $conexion;
     }
-    
+
 }
+new Connection;
+?>
+<html>
+
+</html>
