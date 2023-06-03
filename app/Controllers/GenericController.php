@@ -44,6 +44,7 @@ class GenericController
      */
     public function store($data, string $table = "incomes", /*array $columnheads, */)
     {
+        array_pop($data);
         $columnheads = [];
         foreach ($data as $item => $value) {
             array_push($columnheads, $item);
@@ -58,15 +59,20 @@ class GenericController
 
 
         foreach ($data as $item => $value) {
-            echo ($item . " ");
-            echo ($data["$item"] . " \n");
+            // echo ($item . " ");
+            // echo ($data["$item"] . " \n");
             $stmt->bindValue($item, $data["$item"]);
 
         }
 
+        // for($i=0; i< count($data); $i++){
+
+
+        // }
+
         // var_dump($data[1]);
         $stmt->execute();
-
+        //  echo ("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
         //  header("location: generic");
 
     }

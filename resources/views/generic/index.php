@@ -34,6 +34,7 @@
                         <td>
                             <?= $result["type"] ?>
                         </td>
+
                         <td>
                             <?= $result["date"] ?>
                         </td>
