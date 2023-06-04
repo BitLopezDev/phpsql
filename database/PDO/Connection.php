@@ -30,9 +30,9 @@ final class Connection
     {
         $server = getenv('SERVER_NAME');
         $database = 'finanzas_personales';
-        $username = "retaxmaster";
+        $username = 'retaxmaster';
         $password = '123';
-        print_r(getenv('DB_PASSWORD'));
+
         $conexion = new \PDO("mysql:host=$server;dbname=$database", $username, $password);
 
         $setnames = $conexion->prepare("SET NAMES 'utf8'");

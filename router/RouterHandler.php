@@ -75,7 +75,7 @@ class RouterHandler
 
 
         } else {
-            new CustomException(1, "RouterHandler Exception, route was neither incomes, withdrawals nor generic", basename($_SERVER['PHP_SELF']), __LINE__, );
+            new CustomException(1, "RouterHandler Exception, route was neither incomes, withdrawals nor generic. Error in if conditional", basename($_SERVER['PHP_SELF']), __LINE__, );
 
         }
 

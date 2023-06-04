@@ -5,8 +5,7 @@ namespace App\Controllers;
 use Database\PDO\Connection;
 use App\Errors\CustomException;
 
-class GenericController
-{
+class GenericController {
 
     private $connection;
 
@@ -40,7 +39,6 @@ class GenericController
 
     /**
      * Guarda un nuevo recurso en la base de datos
-     * "payment_method, type, date, amount, description"
      */
     public function store($data, string $table = "incomes", /*array $columnheads, */)
     {
@@ -49,31 +47,22 @@ class GenericController
         foreach ($data as $item => $value) {
             array_push($columnheads, $item);
         }
-        //echo ("columnHeads es " . implode(' ', $columnheads) . "\n");
-
-        //
+        
         $stmt = $this->connection->prepare("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
 
-        // echo ("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
-
-
+        
 
         foreach ($data as $item => $value) {
-            // echo ($item . " ");
-            // echo ($data["$item"] . " \n");
+         
             $stmt->bindValue($item, $data["$item"]);
 
         }
 
-        // for($i=0; i< count($data); $i++){
+        
 
-
-        // }
-
-        // var_dump($data[1]);
+       
         $stmt->execute();
-        // echo ("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
-        //  header("location: generic");
+      
 
     }
 
