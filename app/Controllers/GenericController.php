@@ -5,7 +5,8 @@ namespace App\Controllers;
 use Database\PDO\Connection;
 use App\Errors\CustomException;
 
-class GenericController {
+class GenericController
+{
 
     private $connection;
 
@@ -47,35 +48,43 @@ class GenericController {
         foreach ($data as $item => $value) {
             array_push($columnheads, $item);
         }
-        
+
         $stmt = $this->connection->prepare("INSERT INTO $table (" . implode(', ', $columnheads) . ") VALUES (:" . implode(', :', $columnheads) . ")\n");
 
-        
+
 
         foreach ($data as $item => $value) {
-         
+
             $stmt->bindValue($item, $data["$item"]);
 
         }
 
-        
 
-       
+
+
         $stmt->execute();
-      
+
 
     }
 
     /**
      * Muestra un único recurso especificado
      */
-    public function show($id = 1, $tables)
+    public function show($table, $minid = 1, $maxid = 3, )
     {
+        $stmt = null;
+        if ($minid === $maxid) {
+            $stmt = $this->connection->prepare("SELECT * FROM $table WHERE id=:id;");
+            $stmt->execute([
+                ":id" => $minid
+            ]);
+        } else {
+            $stmt = $this->connection->prepare("SELECT * FROM $table WHERE id BETWEEN $minid AND $maxid");
+            $stmt->execute();
+        }
 
-        $stmt = $this->connection->prepare("SELECT * FROM incomes WHERE id=:id;");
-        $stmt->execute([
-            ":id" => $id
-        ]);
+        /*SELECT * FROM incomes WHERE id BETWEEN 2 AND 5;*/
+        return $stmt->fetchAll();
 
     }
 
