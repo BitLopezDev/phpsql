@@ -1,4 +1,5 @@
 <?php
+namespace show;
 //use App\Errors\CustomException;
 
 $minkey = 0;
@@ -9,7 +10,7 @@ if (isset($_GET['minid'])) {
 
     } else {
         // new CustomException(1, "Query exception. minid is not a number", basename($_SERVER['PHP_SELF']), __LINE__, );
-        echo ('warning: ');
+        //echo ('warning: ');
     }
 
 } else {

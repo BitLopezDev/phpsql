@@ -69,7 +69,7 @@ class GenericController {
     /**
      * Muestra un único recurso especificado
      */
-    public function show($id = 1)
+    public function show($id = 1, $tables)
     {
 
         $stmt = $this->connection->prepare("SELECT * FROM incomes WHERE id=:id;");
